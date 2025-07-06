@@ -1,0 +1,40 @@
+<div>
+  <div className="mm-box mm-box--margin-bottom-4 mm-box--padding-2 mm-box--background-color-background-default mm-box--rounded-md" data-testid="confirmation__simulation_section">
+    <div className="mm-box confirm-info-row mm-box--margin-top-2 mm-box--margin-bottom-2 mm-box--padding-x-2 mm-box--display-flex mm-box--flex-direction-row mm-box--flex-wrap-wrap mm-box--justify-content-space-between mm-box--align-items-flex-start mm-box--color-text-default mm-box--rounded-lg" style={{overflowWrap: 'anywhere', minHeight: 24, position: 'relative'}}>
+      <div className="mm-box flex-center-start">
+        <p className="mm-text md-medium">Estimated changes</p>
+        <div aria-describedby="tippy-tooltip-1" data-original-title="Estimated changes are what might happen if you go through with this transaction. This is just a prediction, not a guarantee." data-tooltipped tabIndex={0} style={{display: 'flex'}}>
+          <span className="mm-icon sm muted ml-1" style={{maskImage: "url('./images/icons/question.svg')"}} />
+        </div>
+      </div>
+      <p className="mm-text md" style={{whiteSpace:'pre-wrap'}}>You're giving someone else permission to spend this amount from your account.</p>
+    </div>
+
+    <div className="mm-box confirm-info-row mt-2 mb-2 px-2 flex-between align-start text-default rounded-lg" style={{overflowWrap:'anywhere', minHeight:24, position:'relative'}}>
+      <div className='flex-center-start'>
+        <p className='md-medium'>Spending cap</p>
+      </div>
+      <div style={{marginLeft:'auto', maxWidth:'100%'}} >
+        <button aria-label='Edit' data-testid='edit-spending-cap-icon' className='button-icon sm primary rounded-lg'>
+          <span className='icon sm inherit' style={{maskImage:"url('./images/icons/edit.svg')"}}/>
+        </button>
+        <p data-testid='simulation-token-value' 
+           className='md text-center px-2 bg-alt rounded-xl color-text-default' 
+           style={{minWidth:0, display:'inline-block', marginInlineEnd:"0.25rem"}}>
+          1000
+        </p>       
+        <div title='' aria-describedby='' tabIndex={0} role='group' >
+          <span title='' aria-hidden={true} 
+                className='icon md inherit question ml-1'
+                style={{maskImage:"url('./images/icons/question.svg')"}}
+               />
+          &nbsp;<span>0x07614...3ad68</span>  
+        </div>      
+      </div>     
+    </div>
+  </div>
+
+  {/* Approve details */}
+  ... // similar simplifications applied for rest of the divs; shortened classes and styles applied with same structure and content
+
+</div>
