@@ -1,0 +1,49 @@
+| Step | Test Steps | Test Data | Expected Result | Notes |
+| --- | --- | --- | --- | --- |
+1,Open extension,,Welcome Back screen, 
+2,Unlock wallet,password (8 characters min),"Ether balance, wallet address, Ethereum Mainnet",
+3,Switch to test network,e.g. Sepolia,"Sepolia balance, wallet address, Sepolia",
+4,Open test dapp,https://noeldapp.github.io/test-dapp,, 
+5-6,"Connect with noeldApp, current account",,
+7-8,"Deploy ERC1155 contract, confirm transaction",,
+9,"Open activity list item","contract deployment transaction details",
+10-11,"Batch Mint tokens, confirm transaction",,
+12,"Open activity list item","batch mint token transaction details",
+13-15,"Set approval for all ERC1155 tokens","Notification window ""Your NFT may be at risk""",
+16-17,"Confirm tokens approval, Open activity list item","Approve token transaction details",
+18,"Expand Activity log","created/submitted/confirmed activities",
+19,View on block explorer,,block explorer opens|
+``` 
+ turns into 
+
+```javascript
+const testData = [
+  {step:1,data:{},expected:{"screen":"Welcome Back"}},
+  {step:2,data:{password:"8 chars min"},expected:{"balance":"Ether","address":"wallet address","network":"Ethereum Mainnet"}},
+  {step:3,data:{network:"Sepolia"},expected:{"balance":"Sepolia","address":"wallet address","network":"Sepolia"}},
+  {step:4,data:{url:"https://noeldapp.github.io/test-dapp"}},
+  {step:5,data:{},expected:{}},
+  {step:6,data:{},expected:{}},
+  {step:7,data:{},expected:{}},
+  {step:8,data:{},expected:{}},
+  {step:9,data:{},expected:{"transaction details":{"status":"","nonce":"","amount":"","gas":"","total":""}}},
+  {step:10,data:{},expected:{}},
+  {step:11,data:{},expected:{}},
+  {step:12,data:{},expected:{"transaction details":{"status":"","nonce":"","amount":"","gas":"","total":""}}},
+  {step:13,data:{action:"Set approval for all"},expected:{"notification":"Your NFT may be at risk"}},
+  {step:14,data:{},expected:{}},
+  {step:15,data:{},expected:{}},  
+   //Combining some steps as they have same expected result or no expected result.
+   //Creating an object with step number as key will make it easy to access any step.
+   const optimizedSteps = Object.fromEntries(testData.map(({ step }) => [step]));
+   const optimizedTestData = [
+     {...optimizedSteps[1],data:null},
+     {...optimizedSteps[2],data:"password (8 characters min)"},
+     {...optimizedSteps[3],data:'e.g. Sepolia'},
+     {...optimizedSteps[4],data:'https://noeldapp.github.io/test-dapp/'}
+   ]
+``` 
+
+Rewritten as:
+```javascript
+const tests=[{s:1},{s:[5,6]},{s:[7,8],e:d=>d&&d.tx},{s:[10,11],e:d=>d&&d.tx},{s:[13..15]}];const runTest=async(t,i,d)=>{for(const{s:e}oft){if(Array.isArray(e))await Promise.all(e.map(s=>runStep(s,i,d)));else await runStep(e,i,d)}};const runStep=async(s,i,d)=>{switch(s){case1;case2;case3;/*code for each step*/}} 
